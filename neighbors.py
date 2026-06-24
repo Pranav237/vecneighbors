@@ -14,7 +14,11 @@ def get_neighbors(word):
 
     top_ids = torch.topk(similarities, 6)
 
-    top_words = tokenizer.decode(top_ids.indices)
+    top_words = []
+    
+    for token_id in top_ids.indices:
+        word = tokenizer.decode(token_id)
+        top_words.append(word)
     
     return top_words
 
